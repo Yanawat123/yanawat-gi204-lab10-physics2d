@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
 
     Rigidbody2D rb2d;
 
-    Vector2 moveInput; //for walk addforce
+    Vector2 moveInput;
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
@@ -18,14 +18,14 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        //walk with addforce
+
         moveInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         rb2d.AddForce(moveInput * Speed);
-        //walk left-right
+        
         move = Input.GetAxis("Horizontal");
         rb2d.linearVelocity = new Vector2(move * Speed, rb2d.linearVelocity.y);
 
-        //jump
+
         if (Input.GetButtonDown("Jump") && !IsJumping)
         {
             rb2d.linearVelocity = new Vector2(rb2d.linearVelocity.x, JumpForce);
